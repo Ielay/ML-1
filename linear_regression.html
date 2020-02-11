@@ -13076,12 +13076,11 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[172]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">random</span> <span class="k">as</span> <span class="nn">std_random</span>
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">random</span>
 </pre></div>
 
@@ -13092,7 +13091,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[173]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_csv_data</span><span class="p">(</span><span class="n">file_name</span><span class="p">):</span>
@@ -13107,7 +13106,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[174]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
@@ -13131,7 +13130,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[175]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">split_to_folds</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
@@ -13179,7 +13178,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[180]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_batch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
@@ -13202,11 +13201,13 @@ div#notebook {
     <span class="n">r2_arr</span> <span class="o">=</span> <span class="p">[]</span>
     
     <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch_numb</span><span class="p">):</span>
-        <span class="n">seed</span> <span class="o">=</span> <span class="n">std_random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+        <span class="n">seed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
         
-        <span class="c1"># shuffle before batch creating</span>
-        <span class="n">std_random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="n">std_random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+        <span class="c1"># shuffle data before batch creating</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
         
         <span class="n">number_of_batches</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="n">batch_size</span>
         <span class="k">if</span> <span class="n">number_of_batches</span> <span class="o">%</span> <span class="n">batch_size</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -13253,7 +13254,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[181]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data_f_name</span> <span class="o">=</span> <span class="s2">&quot;./dataset/facebook_comment_volume.csv&quot;</span>
@@ -13341,11 +13342,11 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0: 0.1836515217735737 35.838480663692 0.9191186454256817 4.177667226720612
-1: 0.16692428447171803 31.909535167837277 0.8272816740843763 4.285313334219525
-2: 0.2829324585805063 27.136391336340253 0.6752994486597668 5.167139991561769
-3: 0.298954232137738 28.423873147148708 0.3880165234148505 4.948019009233205
-4: 0.21035695760727613 32.334626814068436 0.7439804945723925 3.6211990282736095
+<pre>0: 0.23302655715568388 31.95928776319663 0.31200124951976993 29.23013567662983
+1: 0.23104437443289783 25.129474371178603 0.3071534010301822 30.801062730241537
+2: 0.31045210058654205 31.050240989346964 0.2906362933777846 29.481633410758146
+3: 0.3080280341696481 33.630573479710755 0.2861701892274785 28.851709899756163
+4: 0.34652567735258055 26.963717511256615 0.28017067437738685 30.551389960444858
 </pre>
 </div>
 </div>
@@ -13363,7 +13364,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[183]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">frame_data</span> <span class="o">=</span> <span class="p">{}</span>
@@ -13398,7 +13399,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[183]:</div>
+    <div class="prompt output_prompt">Out[25]:</div>
 
 
 
@@ -13433,583 +13434,583 @@ div#notebook {
   <tbody>
     <tr>
       <th>test RMSE</th>
-      <td>35.838481</td>
-      <td>31.909535</td>
-      <td>27.136391</td>
-      <td>28.423873</td>
-      <td>32.334627</td>
-      <td>31.128581</td>
-      <td>3.082227</td>
+      <td>31.959288</td>
+      <td>25.129474</td>
+      <td>31.050241</td>
+      <td>33.630573</td>
+      <td>26.963718</td>
+      <td>29.746659</td>
+      <td>3.185687</td>
     </tr>
     <tr>
       <th>test R2</th>
-      <td>0.183652</td>
-      <td>0.166924</td>
-      <td>0.282932</td>
-      <td>0.298954</td>
-      <td>0.210357</td>
-      <td>0.228564</td>
-      <td>0.053026</td>
+      <td>0.233027</td>
+      <td>0.231044</td>
+      <td>0.310452</td>
+      <td>0.308028</td>
+      <td>0.346526</td>
+      <td>0.285815</td>
+      <td>0.045984</td>
     </tr>
     <tr>
       <th>train RMSE</th>
-      <td>4.177667</td>
-      <td>4.285313</td>
-      <td>5.167140</td>
-      <td>4.948019</td>
-      <td>3.621199</td>
-      <td>4.439868</td>
-      <td>0.556776</td>
+      <td>29.230136</td>
+      <td>30.801063</td>
+      <td>29.481633</td>
+      <td>28.851710</td>
+      <td>30.551390</td>
+      <td>29.783186</td>
+      <td>0.760349</td>
     </tr>
     <tr>
       <th>train R2</th>
-      <td>0.919119</td>
-      <td>0.827282</td>
-      <td>0.675299</td>
-      <td>0.388017</td>
-      <td>0.743980</td>
-      <td>0.710739</td>
-      <td>0.180840</td>
+      <td>0.312001</td>
+      <td>0.307153</td>
+      <td>0.290636</td>
+      <td>0.286170</td>
+      <td>0.280171</td>
+      <td>0.295226</td>
+      <td>0.012275</td>
     </tr>
     <tr>
       <th>bias</th>
-      <td>3.032512</td>
-      <td>3.618544</td>
-      <td>3.692879</td>
-      <td>3.348026</td>
-      <td>3.558849</td>
-      <td>3.450162</td>
-      <td>0.238302</td>
+      <td>4.053833</td>
+      <td>4.222569</td>
+      <td>4.090705</td>
+      <td>4.029523</td>
+      <td>4.103351</td>
+      <td>4.099996</td>
+      <td>0.066662</td>
     </tr>
     <tr>
       <th>0</th>
-      <td>-0.329670</td>
-      <td>0.376626</td>
-      <td>0.259049</td>
-      <td>-0.173634</td>
-      <td>0.190689</td>
-      <td>0.064612</td>
-      <td>0.269545</td>
+      <td>-0.185145</td>
+      <td>0.206990</td>
+      <td>0.150106</td>
+      <td>-0.287481</td>
+      <td>0.148342</td>
+      <td>0.006562</td>
+      <td>0.202035</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.589433</td>
-      <td>-0.879957</td>
-      <td>-0.420749</td>
-      <td>0.136868</td>
-      <td>-0.553072</td>
-      <td>-0.461269</td>
-      <td>0.334533</td>
+      <td>-0.535028</td>
+      <td>-0.244802</td>
+      <td>-0.281763</td>
+      <td>0.002218</td>
+      <td>-0.156190</td>
+      <td>-0.243113</td>
+      <td>0.175758</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.161469</td>
-      <td>0.357536</td>
-      <td>0.486341</td>
-      <td>0.292659</td>
-      <td>0.649643</td>
-      <td>0.389530</td>
-      <td>0.167003</td>
+      <td>-0.039962</td>
+      <td>-0.331414</td>
+      <td>-0.340516</td>
+      <td>0.029870</td>
+      <td>-0.029738</td>
+      <td>-0.142352</td>
+      <td>0.159900</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.272374</td>
-      <td>-0.100163</td>
-      <td>-0.159344</td>
-      <td>0.197867</td>
-      <td>0.237701</td>
-      <td>0.089687</td>
-      <td>0.181684</td>
+      <td>0.130316</td>
+      <td>0.525466</td>
+      <td>0.424846</td>
+      <td>0.214428</td>
+      <td>0.340961</td>
+      <td>0.327203</td>
+      <td>0.141785</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2.157206</td>
-      <td>1.437103</td>
-      <td>1.415163</td>
-      <td>0.264105</td>
-      <td>0.143418</td>
-      <td>1.083399</td>
-      <td>0.767208</td>
+      <td>0.237178</td>
+      <td>-0.184321</td>
+      <td>0.001074</td>
+      <td>-0.095950</td>
+      <td>0.246647</td>
+      <td>0.040925</td>
+      <td>0.174296</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>-0.606700</td>
-      <td>-0.227561</td>
-      <td>0.184264</td>
-      <td>-0.356745</td>
-      <td>0.205667</td>
-      <td>-0.160215</td>
-      <td>0.314656</td>
+      <td>0.265198</td>
+      <td>-0.130762</td>
+      <td>-0.215418</td>
+      <td>0.198282</td>
+      <td>-0.231907</td>
+      <td>-0.022922</td>
+      <td>0.211803</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>1.192630</td>
-      <td>1.117795</td>
-      <td>1.430124</td>
-      <td>0.451856</td>
-      <td>0.838814</td>
-      <td>1.006244</td>
-      <td>0.335332</td>
+      <td>0.640736</td>
+      <td>0.628721</td>
+      <td>0.240620</td>
+      <td>0.565513</td>
+      <td>0.948657</td>
+      <td>0.604849</td>
+      <td>0.225509</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>1.548096</td>
-      <td>0.870815</td>
-      <td>1.048519</td>
-      <td>0.326914</td>
-      <td>0.261817</td>
-      <td>0.811232</td>
-      <td>0.477335</td>
+      <td>0.574431</td>
+      <td>0.301874</td>
+      <td>0.606753</td>
+      <td>0.575068</td>
+      <td>0.627206</td>
+      <td>0.537066</td>
+      <td>0.119279</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.016577</td>
-      <td>0.319145</td>
-      <td>0.053218</td>
-      <td>0.396652</td>
-      <td>0.888933</td>
-      <td>0.334905</td>
-      <td>0.313588</td>
+      <td>0.573064</td>
+      <td>0.059669</td>
+      <td>0.611451</td>
+      <td>0.858294</td>
+      <td>0.815341</td>
+      <td>0.583564</td>
+      <td>0.284447</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>3.658958</td>
-      <td>1.557217</td>
-      <td>1.442301</td>
-      <td>0.344680</td>
-      <td>0.716752</td>
-      <td>1.543981</td>
-      <td>1.149458</td>
+      <td>-0.457719</td>
+      <td>0.369495</td>
+      <td>0.286830</td>
+      <td>0.056105</td>
+      <td>-0.011567</td>
+      <td>0.048629</td>
+      <td>0.289746</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>-0.650160</td>
-      <td>-0.361598</td>
-      <td>-0.445190</td>
-      <td>-0.169373</td>
-      <td>-0.399747</td>
-      <td>-0.405214</td>
-      <td>0.154370</td>
+      <td>0.150073</td>
+      <td>-0.401864</td>
+      <td>-0.392294</td>
+      <td>-0.048610</td>
+      <td>-0.126313</td>
+      <td>-0.163802</td>
+      <td>0.210748</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>1.301722</td>
-      <td>1.124249</td>
-      <td>0.487229</td>
-      <td>0.813087</td>
-      <td>0.944497</td>
-      <td>0.934157</td>
-      <td>0.277758</td>
+      <td>0.348487</td>
+      <td>0.611964</td>
+      <td>1.130787</td>
+      <td>0.314873</td>
+      <td>0.625295</td>
+      <td>0.606281</td>
+      <td>0.292191</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>3.241475</td>
-      <td>2.018200</td>
-      <td>1.420970</td>
-      <td>1.396382</td>
-      <td>1.324194</td>
-      <td>1.880244</td>
-      <td>0.724738</td>
+      <td>0.967819</td>
+      <td>1.536527</td>
+      <td>0.708636</td>
+      <td>0.606355</td>
+      <td>0.747657</td>
+      <td>0.913399</td>
+      <td>0.333144</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>-0.129774</td>
-      <td>0.293832</td>
-      <td>0.534075</td>
-      <td>0.423499</td>
-      <td>-0.088451</td>
-      <td>0.206636</td>
-      <td>0.269109</td>
+      <td>0.803003</td>
+      <td>0.248467</td>
+      <td>0.026466</td>
+      <td>0.233662</td>
+      <td>0.506142</td>
+      <td>0.363548</td>
+      <td>0.267280</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>-0.279997</td>
-      <td>0.142549</td>
-      <td>0.482843</td>
-      <td>0.406745</td>
-      <td>0.614343</td>
-      <td>0.273297</td>
-      <td>0.316626</td>
+      <td>0.112968</td>
+      <td>-0.156520</td>
+      <td>-0.001331</td>
+      <td>-0.147935</td>
+      <td>-0.033909</td>
+      <td>-0.045345</td>
+      <td>0.100016</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>-0.206478</td>
-      <td>-0.206935</td>
-      <td>0.222468</td>
-      <td>-0.380331</td>
-      <td>0.103149</td>
-      <td>-0.093626</td>
-      <td>0.221996</td>
+      <td>0.230173</td>
+      <td>0.186754</td>
+      <td>0.726976</td>
+      <td>0.612256</td>
+      <td>0.100950</td>
+      <td>0.371421</td>
+      <td>0.249651</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>1.677867</td>
-      <td>0.847490</td>
-      <td>1.143729</td>
-      <td>1.049370</td>
-      <td>1.023912</td>
-      <td>1.148474</td>
-      <td>0.281499</td>
+      <td>0.637532</td>
+      <td>0.773758</td>
+      <td>1.242153</td>
+      <td>0.277992</td>
+      <td>0.939806</td>
+      <td>0.774249</td>
+      <td>0.319783</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>2.714053</td>
-      <td>2.782146</td>
-      <td>2.521988</td>
-      <td>0.685509</td>
-      <td>0.508802</td>
-      <td>1.842500</td>
-      <td>1.021922</td>
+      <td>1.294922</td>
+      <td>1.080646</td>
+      <td>1.155135</td>
+      <td>0.905404</td>
+      <td>1.201230</td>
+      <td>1.127468</td>
+      <td>0.130960</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>0.539577</td>
-      <td>0.034727</td>
-      <td>0.195618</td>
-      <td>0.403280</td>
-      <td>0.409561</td>
-      <td>0.316553</td>
-      <td>0.178865</td>
+      <td>0.256362</td>
+      <td>0.406979</td>
+      <td>0.286445</td>
+      <td>0.153531</td>
+      <td>0.783381</td>
+      <td>0.377340</td>
+      <td>0.218511</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>1.962248</td>
-      <td>1.254243</td>
-      <td>1.291864</td>
-      <td>0.644393</td>
-      <td>0.066031</td>
-      <td>1.043756</td>
-      <td>0.642639</td>
+      <td>0.767448</td>
+      <td>-0.107261</td>
+      <td>-0.396583</td>
+      <td>0.417241</td>
+      <td>-0.325034</td>
+      <td>0.071162</td>
+      <td>0.449928</td>
     </tr>
     <tr>
       <th>20</th>
-      <td>-0.948355</td>
-      <td>-0.298580</td>
-      <td>-0.071833</td>
-      <td>0.146921</td>
-      <td>-0.135465</td>
-      <td>-0.261462</td>
-      <td>0.371971</td>
+      <td>0.152091</td>
+      <td>0.337135</td>
+      <td>-0.030420</td>
+      <td>0.178414</td>
+      <td>0.005823</td>
+      <td>0.128608</td>
+      <td>0.131819</td>
     </tr>
     <tr>
       <th>21</th>
-      <td>0.812544</td>
-      <td>0.517323</td>
-      <td>0.906503</td>
-      <td>0.611343</td>
-      <td>0.619610</td>
-      <td>0.693465</td>
-      <td>0.143380</td>
+      <td>0.185779</td>
+      <td>0.766288</td>
+      <td>0.312692</td>
+      <td>0.828143</td>
+      <td>0.179224</td>
+      <td>0.454425</td>
+      <td>0.284576</td>
     </tr>
     <tr>
       <th>22</th>
-      <td>1.433474</td>
-      <td>1.069090</td>
-      <td>1.197540</td>
-      <td>0.792492</td>
-      <td>0.035124</td>
-      <td>0.905544</td>
-      <td>0.481899</td>
+      <td>0.650481</td>
+      <td>0.981868</td>
+      <td>0.483993</td>
+      <td>0.425390</td>
+      <td>0.913073</td>
+      <td>0.690961</td>
+      <td>0.223142</td>
     </tr>
     <tr>
       <th>23</th>
-      <td>-0.144183</td>
-      <td>0.216057</td>
-      <td>0.844234</td>
-      <td>0.628943</td>
-      <td>0.623981</td>
-      <td>0.433806</td>
-      <td>0.353322</td>
+      <td>0.048967</td>
+      <td>0.600821</td>
+      <td>0.789287</td>
+      <td>0.608161</td>
+      <td>0.143100</td>
+      <td>0.438067</td>
+      <td>0.288853</td>
     </tr>
     <tr>
       <th>24</th>
-      <td>1.343267</td>
-      <td>1.309318</td>
-      <td>1.552682</td>
-      <td>1.075495</td>
-      <td>1.185891</td>
-      <td>1.293331</td>
-      <td>0.160629</td>
+      <td>0.872690</td>
+      <td>0.481308</td>
+      <td>1.162291</td>
+      <td>0.947374</td>
+      <td>0.921261</td>
+      <td>0.876985</td>
+      <td>0.221311</td>
     </tr>
     <tr>
       <th>25</th>
-      <td>-0.611721</td>
-      <td>-0.667037</td>
-      <td>-0.816777</td>
-      <td>-0.287331</td>
-      <td>-0.574367</td>
-      <td>-0.591447</td>
-      <td>0.173019</td>
+      <td>-0.147655</td>
+      <td>-0.195275</td>
+      <td>-0.050447</td>
+      <td>-0.321924</td>
+      <td>-0.188841</td>
+      <td>-0.180828</td>
+      <td>0.087499</td>
     </tr>
     <tr>
       <th>26</th>
-      <td>0.742843</td>
-      <td>-0.094405</td>
-      <td>0.232046</td>
-      <td>-0.252457</td>
-      <td>0.772771</td>
-      <td>0.280160</td>
-      <td>0.420247</td>
+      <td>0.060411</td>
+      <td>0.955831</td>
+      <td>0.753520</td>
+      <td>0.572352</td>
+      <td>0.748701</td>
+      <td>0.618163</td>
+      <td>0.304160</td>
     </tr>
     <tr>
       <th>27</th>
-      <td>0.745495</td>
-      <td>0.351062</td>
-      <td>0.355644</td>
-      <td>0.325375</td>
-      <td>-0.291797</td>
-      <td>0.297156</td>
-      <td>0.333165</td>
+      <td>0.209860</td>
+      <td>0.201829</td>
+      <td>0.033375</td>
+      <td>-0.132778</td>
+      <td>0.292927</td>
+      <td>0.121043</td>
+      <td>0.152361</td>
     </tr>
     <tr>
       <th>28</th>
-      <td>-0.486363</td>
-      <td>0.123669</td>
-      <td>0.179663</td>
-      <td>-0.082324</td>
-      <td>-0.143775</td>
-      <td>-0.081826</td>
-      <td>0.235836</td>
+      <td>0.411891</td>
+      <td>0.827022</td>
+      <td>0.755576</td>
+      <td>0.641470</td>
+      <td>0.756706</td>
+      <td>0.678533</td>
+      <td>0.145991</td>
     </tr>
     <tr>
       <th>29</th>
-      <td>0.711098</td>
-      <td>2.469390</td>
-      <td>1.522348</td>
-      <td>1.405581</td>
-      <td>1.439557</td>
-      <td>1.509595</td>
-      <td>0.561194</td>
+      <td>2.281307</td>
+      <td>1.696922</td>
+      <td>1.345679</td>
+      <td>1.719093</td>
+      <td>1.904426</td>
+      <td>1.789485</td>
+      <td>0.305151</td>
     </tr>
     <tr>
       <th>30</th>
-      <td>3.750070</td>
-      <td>5.223486</td>
-      <td>4.911160</td>
-      <td>4.180191</td>
-      <td>3.764519</td>
-      <td>4.365885</td>
-      <td>0.601358</td>
+      <td>5.792997</td>
+      <td>6.265100</td>
+      <td>5.031915</td>
+      <td>5.619893</td>
+      <td>5.585135</td>
+      <td>5.659008</td>
+      <td>0.396367</td>
     </tr>
     <tr>
       <th>31</th>
-      <td>-0.828757</td>
-      <td>0.460394</td>
-      <td>-0.053332</td>
-      <td>-0.470794</td>
-      <td>-0.353823</td>
-      <td>-0.249262</td>
-      <td>0.433087</td>
+      <td>-0.586966</td>
+      <td>-0.430139</td>
+      <td>-0.554167</td>
+      <td>-0.302275</td>
+      <td>-0.590787</td>
+      <td>-0.492867</td>
+      <td>0.111769</td>
     </tr>
     <tr>
       <th>32</th>
-      <td>1.050938</td>
-      <td>2.566074</td>
-      <td>1.382658</td>
-      <td>1.520235</td>
-      <td>0.879488</td>
-      <td>1.479879</td>
-      <td>0.589128</td>
+      <td>1.602976</td>
+      <td>1.672224</td>
+      <td>1.559883</td>
+      <td>1.661351</td>
+      <td>1.407887</td>
+      <td>1.580864</td>
+      <td>0.095577</td>
     </tr>
     <tr>
       <th>33</th>
-      <td>3.910397</td>
-      <td>3.642232</td>
-      <td>4.391671</td>
-      <td>3.667423</td>
-      <td>3.879352</td>
-      <td>3.898215</td>
-      <td>0.269368</td>
+      <td>5.690387</td>
+      <td>6.109222</td>
+      <td>5.297674</td>
+      <td>5.159223</td>
+      <td>5.417433</td>
+      <td>5.534788</td>
+      <td>0.336223</td>
     </tr>
     <tr>
       <th>34</th>
-      <td>-1.908907</td>
-      <td>-1.808309</td>
-      <td>-2.476102</td>
-      <td>-1.975392</td>
-      <td>-1.905708</td>
-      <td>-2.014884</td>
-      <td>0.236688</td>
+      <td>-2.979768</td>
+      <td>-3.045430</td>
+      <td>-3.017600</td>
+      <td>-3.262161</td>
+      <td>-3.175854</td>
+      <td>-3.096163</td>
+      <td>0.106018</td>
     </tr>
     <tr>
       <th>35</th>
-      <td>0.354483</td>
-      <td>0.404074</td>
-      <td>-0.241041</td>
-      <td>0.147331</td>
-      <td>0.079469</td>
-      <td>0.148863</td>
-      <td>0.229893</td>
+      <td>0.162338</td>
+      <td>0.270715</td>
+      <td>0.176411</td>
+      <td>0.140795</td>
+      <td>0.296265</td>
+      <td>0.209305</td>
+      <td>0.062153</td>
     </tr>
     <tr>
       <th>36</th>
-      <td>0.752063</td>
-      <td>1.263638</td>
-      <td>1.124315</td>
-      <td>1.320341</td>
-      <td>1.420859</td>
-      <td>1.176243</td>
-      <td>0.232751</td>
+      <td>1.447125</td>
+      <td>1.435239</td>
+      <td>2.849905</td>
+      <td>1.375271</td>
+      <td>0.981331</td>
+      <td>1.617774</td>
+      <td>0.639446</td>
     </tr>
     <tr>
       <th>37</th>
-      <td>0.543167</td>
-      <td>0.438242</td>
-      <td>0.992320</td>
-      <td>0.942367</td>
-      <td>0.237912</td>
-      <td>0.630802</td>
-      <td>0.292195</td>
+      <td>0.262264</td>
+      <td>0.172443</td>
+      <td>0.121357</td>
+      <td>0.588367</td>
+      <td>0.374004</td>
+      <td>0.303687</td>
+      <td>0.166236</td>
     </tr>
     <tr>
       <th>38</th>
-      <td>1.231191</td>
-      <td>0.670358</td>
-      <td>0.745172</td>
-      <td>0.836683</td>
-      <td>0.705787</td>
-      <td>0.837838</td>
-      <td>0.204354</td>
+      <td>0.771000</td>
+      <td>0.999330</td>
+      <td>1.026439</td>
+      <td>0.877061</td>
+      <td>0.797910</td>
+      <td>0.894348</td>
+      <td>0.103231</td>
     </tr>
     <tr>
       <th>39</th>
-      <td>1.228516</td>
-      <td>0.382284</td>
-      <td>0.793275</td>
-      <td>0.664576</td>
-      <td>0.650480</td>
-      <td>0.743826</td>
-      <td>0.276795</td>
+      <td>0.424092</td>
+      <td>0.223100</td>
+      <td>0.548597</td>
+      <td>0.194176</td>
+      <td>0.449813</td>
+      <td>0.367956</td>
+      <td>0.136869</td>
     </tr>
     <tr>
       <th>40</th>
-      <td>0.530711</td>
-      <td>0.628005</td>
-      <td>0.404873</td>
-      <td>0.329899</td>
-      <td>0.309783</td>
-      <td>0.440654</td>
-      <td>0.121560</td>
+      <td>0.192744</td>
+      <td>0.424386</td>
+      <td>0.636028</td>
+      <td>0.387287</td>
+      <td>0.709674</td>
+      <td>0.470024</td>
+      <td>0.184825</td>
     </tr>
     <tr>
       <th>41</th>
-      <td>0.126072</td>
-      <td>0.839243</td>
-      <td>1.010273</td>
-      <td>0.558086</td>
-      <td>0.426099</td>
-      <td>0.591955</td>
-      <td>0.310433</td>
+      <td>0.377326</td>
+      <td>0.418348</td>
+      <td>0.804390</td>
+      <td>0.471760</td>
+      <td>0.713274</td>
+      <td>0.557020</td>
+      <td>0.169939</td>
     </tr>
     <tr>
       <th>42</th>
-      <td>0.288588</td>
-      <td>0.458143</td>
-      <td>0.323490</td>
-      <td>0.173427</td>
-      <td>0.764248</td>
-      <td>0.401579</td>
-      <td>0.202804</td>
+      <td>0.866423</td>
+      <td>0.640267</td>
+      <td>1.017143</td>
+      <td>0.715932</td>
+      <td>0.885382</td>
+      <td>0.825030</td>
+      <td>0.132893</td>
     </tr>
     <tr>
       <th>43</th>
-      <td>0.176368</td>
-      <td>0.801936</td>
-      <td>0.203475</td>
-      <td>0.772369</td>
-      <td>0.785981</td>
-      <td>0.548026</td>
-      <td>0.292666</td>
+      <td>0.675915</td>
+      <td>0.333509</td>
+      <td>0.817166</td>
+      <td>0.546092</td>
+      <td>0.625919</td>
+      <td>0.599720</td>
+      <td>0.159699</td>
     </tr>
     <tr>
       <th>44</th>
-      <td>0.723320</td>
-      <td>0.368689</td>
-      <td>0.155467</td>
-      <td>0.266589</td>
-      <td>0.661648</td>
-      <td>0.435143</td>
-      <td>0.221538</td>
+      <td>0.479153</td>
+      <td>0.298036</td>
+      <td>0.849087</td>
+      <td>0.520984</td>
+      <td>0.691269</td>
+      <td>0.567706</td>
+      <td>0.188250</td>
     </tr>
     <tr>
       <th>45</th>
-      <td>0.038057</td>
-      <td>0.140366</td>
-      <td>0.522700</td>
-      <td>0.493970</td>
-      <td>0.900403</td>
-      <td>0.419099</td>
-      <td>0.306880</td>
+      <td>0.318169</td>
+      <td>0.069147</td>
+      <td>0.606889</td>
+      <td>0.219041</td>
+      <td>0.218251</td>
+      <td>0.286300</td>
+      <td>0.178943</td>
     </tr>
     <tr>
       <th>46</th>
-      <td>0.975649</td>
-      <td>0.417456</td>
-      <td>0.420765</td>
-      <td>0.627775</td>
-      <td>0.268884</td>
-      <td>0.542106</td>
-      <td>0.245035</td>
+      <td>0.418424</td>
+      <td>0.502369</td>
+      <td>0.239357</td>
+      <td>0.295634</td>
+      <td>0.224959</td>
+      <td>0.336148</td>
+      <td>0.107491</td>
     </tr>
     <tr>
       <th>47</th>
-      <td>-0.062711</td>
-      <td>0.500599</td>
-      <td>0.704801</td>
-      <td>0.950052</td>
-      <td>0.732340</td>
-      <td>0.565016</td>
-      <td>0.344668</td>
+      <td>0.708145</td>
+      <td>0.781429</td>
+      <td>0.452567</td>
+      <td>0.641150</td>
+      <td>0.416624</td>
+      <td>0.599983</td>
+      <td>0.142596</td>
     </tr>
     <tr>
       <th>48</th>
-      <td>0.468745</td>
-      <td>0.941395</td>
-      <td>1.300957</td>
-      <td>1.133529</td>
-      <td>0.389384</td>
-      <td>0.846802</td>
-      <td>0.360438</td>
+      <td>0.484376</td>
+      <td>0.427635</td>
+      <td>0.647901</td>
+      <td>0.523983</td>
+      <td>0.187129</td>
+      <td>0.454205</td>
+      <td>0.151877</td>
     </tr>
     <tr>
       <th>49</th>
-      <td>0.555637</td>
-      <td>0.631510</td>
-      <td>0.579046</td>
-      <td>0.547685</td>
-      <td>0.646035</td>
-      <td>0.591983</td>
-      <td>0.039837</td>
+      <td>0.573616</td>
+      <td>0.682171</td>
+      <td>0.474228</td>
+      <td>0.479099</td>
+      <td>0.549551</td>
+      <td>0.551733</td>
+      <td>0.075869</td>
     </tr>
     <tr>
       <th>50</th>
-      <td>0.835024</td>
-      <td>0.693850</td>
-      <td>0.302801</td>
-      <td>0.730353</td>
-      <td>0.093775</td>
-      <td>0.531161</td>
-      <td>0.283525</td>
+      <td>0.513133</td>
+      <td>0.419905</td>
+      <td>0.572777</td>
+      <td>0.447975</td>
+      <td>0.112866</td>
+      <td>0.413331</td>
+      <td>0.159315</td>
     </tr>
     <tr>
       <th>51</th>
-      <td>0.173872</td>
-      <td>0.063155</td>
-      <td>0.142127</td>
-      <td>0.621020</td>
-      <td>-0.053203</td>
-      <td>0.189394</td>
-      <td>0.229594</td>
+      <td>0.400539</td>
+      <td>0.609058</td>
+      <td>0.640111</td>
+      <td>0.315815</td>
+      <td>0.400344</td>
+      <td>0.473173</td>
+      <td>0.127808</td>
     </tr>
     <tr>
       <th>52</th>
-      <td>-0.191369</td>
-      <td>0.108460</td>
-      <td>0.401641</td>
-      <td>0.610834</td>
-      <td>0.632053</td>
-      <td>0.312324</td>
-      <td>0.314509</td>
+      <td>0.207587</td>
+      <td>0.668357</td>
+      <td>0.360561</td>
+      <td>0.493982</td>
+      <td>0.385572</td>
+      <td>0.423212</td>
+      <td>0.152932</td>
     </tr>
   </tbody>
 </table>
